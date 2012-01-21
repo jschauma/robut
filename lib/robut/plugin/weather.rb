@@ -12,38 +12,37 @@ class Robut::Plugin::Weather
   # Returns a description of how to use this plugin
   def usage
     [
-      "#{at_nick} weather - returns the weather in the default location for today",
-      "#{at_nick} weather tomorrow - returns the weather in the default location for tomorrow",
-      "#{at_nick} weather <location> - returns the weather for <location> today",
-      "#{at_nick} weather <location> Tuesday - returns the weather for <location> Tuesday"
+      "!weather - returns the weather in the default location for today",
+      "!weather tomorrow - returns the weather in the default location for tomorrow",
+      "!weather <location> - returns the weather for <location> today",
+      "!weather <location> Tuesday - returns the weather for <location> Tuesday"
     ]
   end
   
   def handle(time, sender_nick, message)
-    # ignore messages that don't end in ?
-    return unless message[message.length - 1, 1] == "?"
-    message = message[0..message.length - 2]
 
     words = words(message)
-    i = words.index("weather")
 
-    # ignore messages that don't have "weather" in them
-    return if i.nil?
+    return if words.shift() != '!weather'
 
-    location = i.zero? ? self.class.default_location : words[0..i-1].join(" ")
+    if words.length() > 0
+      day_of_week = nil
+      day_string = words.last().downcase
+      day_of_week = parse_day(day_string)
+      if day_of_week
+        words.pop()
+      end
+    end
+
+    if words.length() > 0
+      location = words.join(" ")
+    else
+      location = "10010"
+    end
+
     if location.nil?
       reply "I don't have a default location!"
       return
-    end
-
-    day_of_week = nil
-    day_string = words[i+1..-1].join(" ").downcase
-    if day_string != ""
-      day_of_week = parse_day(day_string)
-      if day_of_week.nil?
-        reply "I don't recognize the date: \"#{day_string}\""
-        return
-      end
     end
 
     if bad_location?(location)

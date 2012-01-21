@@ -7,18 +7,30 @@ class Robut::Plugin::Calc
 
   # Returns a description of how to use this plugin
   def usage
-    "#{at_nick} calc <calculation> - replies with the result of <calculation>"
+    "!calc <calculation> - replies with the result of <calculation>"
   end
   
   # Perform the calculation specified in +message+, and send the
   # result back.
   def handle(time, sender_nick, message)
-    if sent_to_me?(message) && words(message).first == 'calc'
-      calculation = words(message, 'calc').join(' ')
-      begin
-        reply("#{calculation} = #{::Calc.evaluate(calculation)}")
-      rescue
-        reply("Can't calculate that.")
+    words = words(message)
+    if words.first() == '!calc'
+      words.shift()
+      calculation = words.join(' ')
+      # a-z    => functions, like sqrt
+      # 0-9.   => numbers
+      # ^+-%*/ => operators
+      # ()     => grouping
+      # <>=;     => allow declarations etc.
+      if calculation =~ /^[a-zA-Z0-9;<>={}\.\*%\/\+\-\(\)\^ ]+$/
+        if calculation == "sqrt(-1)"
+          reply("i")
+        else
+          result = `echo '#{calculation}' | bc -l 2>&1`
+          reply(result)
+        end
+      else
+        reply("@#{sender_nick}: You're being naughty!")
       end
     end
   end
