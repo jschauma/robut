@@ -24,10 +24,11 @@ rather than
 
 == Changes in default plugins
 
-[Robut::Plugin::Calc] -- same idea as in the original, different
-implementation.  In particular, this plugin shells out to bc(1), which
-allows it to perform a few more complex calculations (ie pretty much
-anything you can do with bc(1)).
+[Robut::Plugin::Calc]
+
+Ssame idea as in the original, different implementation.  In particular,
+this plugin shells out to bc(1), which allows it to perform a few more
+complex calculations (ie pretty much anything you can do with bc(1)).
 
   !calc 1+1                    # => 2
   !calc ibase=2; 1001010101    # => 597
