@@ -36,16 +36,22 @@ anything you can do with bc(1)).
   !calc 4*a(1)                 # => 3.14159265358979323844
 
 
-[Robut::Plugin::GoogleImages] -- instead of returning the first image,
-this invocation returns randomly one of the first 10 images.
+[Robut::Plugin::GoogleImages]
+
+Instead of returning the first image, this invocation returns randomly one
+of the first 10 images.
 
 
 == Additional plugins provided in this fork
 
-[Robut::Plugin::Stock] -- get the latest stock quote
+[Robut::Plugin::Stock]
+
+Get the latest stock quote:
 
    !stock yhoo
 
-[Robut::Plugin::Twitter] -- get twitter messages
+[Robut::Plugin::Twitter]
+
+Get twitter messages:
 
    !twitter jschauma
