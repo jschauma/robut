@@ -25,9 +25,10 @@ class Robut::Plugin::GoogleImages
       images = Google::Search::Image.new(:query => query)
 
       n = 0
+      r = rand(10)
       if images
         images.each() do |image|
-          if n == rand(10) || n == 10
+          if n == r || n == 10
             reply image.uri
             return
           end
