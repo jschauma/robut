@@ -16,7 +16,7 @@ class Robut::Plugin::Stock
 
   # Returns a description of how to use this plugin
   def usage
-    "!stock <symbol> - responds with the last quote <symbol> is trading at"
+    "?stock <symbol> - responds with the last quote <symbol> is trading at"
   end
 
   def handle(time, sender_nick, message)
@@ -25,7 +25,7 @@ class Robut::Plugin::Stock
     url = "http://download.finance.yahoo.com/d/quotes.csv?f=l1&s="
     chart = "http://chart.finance.yahoo.com/z?t=1d&s="
 
-    if words(message).join(' ') =~ /^!stock (\S+)$/
+    if words(message).join(' ') =~ /^\?stock (\S+)$/
       sym = $1.upcase()
       url += sym
       chart += sym + "&ign=.gif"

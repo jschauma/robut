@@ -16,14 +16,14 @@ class Robut::Plugin::Twitter
 
   # Returns a description of how to use this plugin
   def usage
-    "!twitter <user> (-N) - responds with user's last(-N) twitter message"
+    "?twitter <user> (-N) - responds with user's last(-N) twitter message"
   end
 
   def handle(time, sender_nick, message)
 
     url = "http://api.twitter.com/1/statuses/user_timeline.json?screen_name="
 
-    if words(message).join(' ') =~ /^!twitter\s+(\S+)(\s+-(\d+))?$/
+    if words(message).join(' ') =~ /^\?twitter\s+(\S+)(\s+-(\d+))?$/
       twitterer = $1
       num = $3
       if not num

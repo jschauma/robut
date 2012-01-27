@@ -11,12 +11,12 @@ page: https://github.com/justinweiss/robut
 == Changes in this fork
 
 I took the liberty of making a few minor changes in this fork.  Most
-notably, this bot responds to commands preceded by an exclamation point
+notably, this bot responds to commands preceded by a question point
 rather than by addressing the bot via the @-notation.
 
 That is, in this bot, you'd use
 
-  !help
+  ?help
 
 rather than
 
@@ -30,11 +30,11 @@ Ssame idea as in the original, different implementation.  In particular,
 this plugin shells out to bc(1), which allows it to perform a few more
 complex calculations (ie pretty much anything you can do with bc(1)).
 
-  !calc 1+1                    # => 2
-  !calc ibase=2; 1001010101    # => 597
-  !calc obase=16; 1024+123456  # => 1E640
-  !calc sqrt(99)               # => 9.94987437106619954734
-  !calc 4*a(1)                 # => 3.14159265358979323844
+  ?calc 1+1                    # => 2
+  ?calc ibase=2; 1001010101    # => 597
+  ?calc obase=16; 1024+123456  # => 1E640
+  ?calc sqrt(99)               # => 9.94987437106619954734
+  ?calc 4*a(1)                 # => 3.14159265358979323844
 
 
 [Robut::Plugin::GoogleImages]
@@ -49,10 +49,10 @@ of the first 10 images.
 
 Get the latest stock quote:
 
-   !stock yhoo
+   ?stock yhoo
 
 [Robut::Plugin::Twitter]
 
 Get twitter messages:
 
-   !twitter jschauma
+   ?twitter jschauma

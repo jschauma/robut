@@ -6,13 +6,13 @@ class Robut::Plugin::GoogleImages
 
   # Returns a description of how to use this plugin
   def usage
-    "!image <query> - responds with a random image from a Google Images search for <query>"
+    "?image <query> - responds with a random image from a Google Images search for <query>"
   end
 
   def handle(time, sender_nick, message)
     query = ""
     cmd = false
-    if words(message).join(' ') =~ /^!image (.*)/
+    if words(message).join(' ') =~ /^\?image (.*)/
       query = $1
       cmd = true
     end

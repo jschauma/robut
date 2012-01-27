@@ -15,7 +15,7 @@ class Robut::Plugin::Klout
 
   # Returns a description of how to use this plugin
   def usage
-    "!klout <user> - retrieve user's klout score and 'areas of expertise'"
+    "?klout <user> - retrieve user's klout score and 'areas of expertise'"
   end
 
   def handle(time, sender_nick, message)
@@ -24,7 +24,7 @@ class Robut::Plugin::Klout
 
     input = words(message).join(' ')
 
-    if input =~ /^!klout (\S+)$/
+    if input =~ /^\?klout (\S+)$/
       user = $1
       url += user
       res = Net::HTTP.get_response(URI(url))
@@ -34,7 +34,7 @@ class Robut::Plugin::Klout
         score = "unknown"
         topics = []
         res.body.each() do |line|
-          if line =~ /.*<span class="value">(.*)<\/span>/
+          if score == "unknown" and line =~ /.*<span class="value">(.*)<\/span>/
             score = $1
           end
           if line =~ /.*<a class="topic-link".*>(.*)<\/a>/

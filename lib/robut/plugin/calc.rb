@@ -7,14 +7,14 @@ class Robut::Plugin::Calc
 
   # Returns a description of how to use this plugin
   def usage
-    "!calc <calculation> - replies with the result of <calculation>"
+    "?calc <calculation> - replies with the result of <calculation>"
   end
   
   # Perform the calculation specified in +message+, and send the
   # result back.
   def handle(time, sender_nick, message)
     words = words(message)
-    if words.first() == '!calc'
+    if words.first() == '?calc'
       words.shift()
       calculation = words.join(' ')
       # a-z    => functions, like sqrt

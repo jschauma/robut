@@ -11,19 +11,14 @@ class Robut::Plugin::Weather
 
   # Returns a description of how to use this plugin
   def usage
-    [
-      "!weather - returns the weather in the default location for today",
-      "!weather tomorrow - returns the weather in the default location for tomorrow",
-      "!weather <location> - returns the weather for <location> today",
-      "!weather <location> Tuesday - returns the weather for <location> Tuesday"
-    ]
+      "?weather (<day>|<location> (<day>)) - get a weather report"
   end
   
   def handle(time, sender_nick, message)
 
     words = words(message)
 
-    return if words.shift() != '!weather'
+    return if words.shift() != '?weather'
 
     if words.length() > 0
       day_of_week = nil

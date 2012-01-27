@@ -1,4 +1,4 @@
-# This is a silly litte rubot plugin to get some trivia.
+# This is a silly litte rubot plugin to get a Bruce Schneier qoute.
 #
 # Wwritten by Jan Schaumann <jschauma@netmeister.org> in January 2012.
 #
@@ -10,39 +10,25 @@ require 'uri'
 require 'net/http'
 
 # Responds with a little bit of trivia
-class Robut::Plugin::Trivia
+class Robut::Plugin::Schneier
   include Robut::Plugin
-
-
-  # Returns a description of how to use this plugin
-  def usage
-    "?trivia - responds with a little bit of trivia"
-  end
 
   def handle(time, sender_nick, message)
 
-    cmd = false
-    url = "http://www.nicefacts.com/quickfacts/index.php"
+    url = "http://www.schneierfacts.com/"
 
     input = words(message).join(' ')
 
-    if input =~ /^\?trivia\s*$/
-      cmd = true
-    end
-
-    if input =~ /(trivia|fact)/ or cmd
+    if input =~ /(bruce schneier|password|crypt|blowfish)/
       res = Net::HTTP.get_response(URI(url))
       if res.code != "200"
         reply res.message
       else
         res.body.each() do |line|
-          if line =~ /<div class='factText'>(.*)<\/div>/
+          if line =~ /.*<p class="fact">(.*)<\/p>/
             reply $1
             return
           end
-        end
-        if cmd
-          reply "I'm sorry, I was unable to get you a snippet of trivia. Sorry!"
         end
       end
     end

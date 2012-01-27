@@ -16,7 +16,7 @@ class Robut::Plugin::Insult
 
   # Returns a description of how to use this plugin
   def usage
-    "!insult <somebody> - generate an insult"
+    "?insult <somebody> - generate an insult"
   end
 
   def handle(time, sender_nick, message)
@@ -25,9 +25,9 @@ class Robut::Plugin::Insult
 
     input = words(message).join(' ')
 
-    if input =~ /^!insult (.*)$/
+    if input =~ /^\?insult (.*)$/
       loser = $1
-      if loser == at_nick
+      if loser =~ /#{at_nick}/
         loser = sender_nick
       end
       res = Net::HTTP.get_response(URI(url))
@@ -36,7 +36,7 @@ class Robut::Plugin::Insult
       else
         res.body.each() do |line|
           if line =~ /.*<font face="Verdana" size="4"><strong><i>(.*)<\/i>/
-            reply loser + ": " + $1
+            reply "@" + loser + ": " + $1
             return
           end
         end
