@@ -158,6 +158,41 @@ module Robut::Plugin
     connection.store
   end
 
+
+	# returns true if the command is throttled, false otherwise (then
+	# sets the throttle)
+	def is_throttled(command, seconds)
+		max = seconds ? seconds : connection.config.default_throttle
+		now = Time.now().to_i()
+
+		if not connection.config.throttles.has_key?(command)
+			connection.config.throttles[command] = { "time" => now,
+								"limit" => max }
+			return false
+		else
+			diff = now - connection.config.throttles[command]["time"]
+			if connection.config.throttles[command]["limit"] != max
+				diff = connection.config.throttles[command]["time"] - now
+				if diff <= 0
+					connection.config.throttles[command]["time"] = now
+					connection.config.throttles[command]["limit"] = max
+					return false
+				end
+			elsif diff > max
+				connection.config.throttles[command]["time"] = now
+				connection.config.throttles[command]["limit"] = max
+				return false
+			end
+
+			if (diff >= 0) and (diff < max)
+				return true
+			end
+		end
+
+		return true
+	end
+
+
   private
 
   # Find and run all the actions associated with matchers that match
@@ -179,4 +214,5 @@ module Robut::Plugin
   def matchers
     self.class.matchers
   end
+
 end
