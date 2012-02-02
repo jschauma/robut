@@ -24,7 +24,7 @@ rather than
 
 == Changes in default plugins
 
-[Robut::Plugin::Calc]
+[Robut::Plugin::Calc] a simple calculator
 
 Same idea as in the original, different implementation.  In particular,
 this plugin shells out to bc(1), which allows it to perform a few more
@@ -36,7 +36,7 @@ complex calculations (ie pretty much anything you can do with bc(1)).
   ?calc sqrt(99)               # => 9.94987437106619954734
   ?calc 4*a(1)                 # => 3.14159265358979323844
 
-[Robut::Plugin::GoogleImages]
+[Robut::Plugin::GoogleImages] does a google image search for a query
 
 Instead of returning the first image, this invocation returns randomly one
 of the first 10 images.
@@ -44,50 +44,52 @@ of the first 10 images.
 
 == Additional plugins provided in this fork
 
-[Robut::Plugin::Eliza]
+[Robut::Plugin::Eliza] your friendly neighborhood therapist
 
 A few Eliza- and other snarky comments to allow for moderately
 entertaining dialog with the bot.
 
 
-[Robut::Plugin::Insult]
+[Robut::Plugin::Insult] don't mess with the bot
 
 Generate an insult for somebody or something.
 
   ?insult bob
 
-
-[Robut::Plugin::Klout]
+[Robut::Plugin::Klout] your mom's got klout
 
 Retrieve a given user's Klout score and areas of expertise.
 
   ?klout jbot
 
-[Robut::Plugin::Schneier]
+[Robut::Plugin::Schneier] Oehpr Fpuarvre rkcrpgf gur Fcnavfu Vadhvfvgvba.
 
 Quip a random fact about Bruce Schneier when appropriate.
 
-[Robut::Plugin::Shakespear]
+[Robut::Plugin::Shakespear] A plugin by any other name...
 
 Generate a shakespearean insult when appropriate.
 
-
-[Robut::Plugin::Stock]
+[Robut::Plugin::Stock] How much you got?
 
 Get the latest stock quote:
 
    ?stock yhoo
 
-
-[Robut::Plugin::Trivia]
+[Robut::Plugin::Trivia] Everybody knows something.
 
 Retrieve a useful snippet of information.
 
   ?trivia
 
-
-[Robut::Plugin::Twitter]
+[Robut::Plugin::Twitter] Chirp chirp.
 
 Get twitter messages:
 
    ?twitter jschauma
+
+[Robut::Plugin::Wikipedia] Wiki wiki.
+
+Get a brief wikipedia definition
+
+  ?wiki cow and chicken
