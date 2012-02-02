@@ -15,11 +15,19 @@ class Robut::Plugin::Schneier
 
   def handle(time, sender_nick, message)
 
+    if words(message).join(' ') =~ /^\?/
+      return
+    end
+
     url = "http://www.schneierfacts.com/"
 
     input = words(message).join(' ')
 
     if input =~ /(bruce schneier|password|crypt|blowfish)/
+      if is_throttled("schneier", nil)
+        return
+      end
+
       res = Net::HTTP.get_response(URI(url))
       if res.code != "200"
         reply res.message
@@ -30,6 +38,7 @@ class Robut::Plugin::Schneier
             return
           end
         end
+#        reply "I really would have liked to give you a fact about Bruce Schneier, but that didn't work out."
       end
     end
   end

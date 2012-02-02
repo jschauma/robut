@@ -31,6 +31,10 @@ class Robut::Plugin::Trivia
     end
 
     if input =~ /(trivia|fact)/ or cmd
+      if is_throttled("trivia", nil)
+        return
+      end
+
       res = Net::HTTP.get_response(URI(url))
       if res.code != "200"
         reply res.message

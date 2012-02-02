@@ -20,6 +20,10 @@ class Robut::Plugin::Shakespear
     input = words(message).join(' ')
 
     if input =~ /(shakespear|hamlet|Coriolanus|macbeth|romeo and juliet|merchant of venice|midsummer nicht's dream|henry V|as you like it|All's Well That Ends Well|Comedy of Errors|Cymbeline|Love's Labours Lost|Measure for Measure|Merry Wives of Windsor|Much Ado About Nothing|Pericles|Prince of Tyre|Taming of the Shrew|Tempest|Troilus|Cressida|Twelfth Night|two gentleman of verona|Winter's tale|henry IV|king john|richard II|antony and cleopatra|coriolanus|julius caesar|kind lear|othello|timon of athens|titus|andronicus)/i
+      if is_throttled("shakespear", nil)
+        return
+      end
+
       res = Net::HTTP.get_response(URI(url))
       if res.code != "200"
         reply res.message
