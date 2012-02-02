@@ -1,6 +1,6 @@
 # This is a silly litte rubot plugin to get a stock quote and chart.
 #
-# Wwritten by Jan Schaumann <jschauma@netmeister.org> in January 2012.
+# Written by Jan Schaumann <jschauma@netmeister.org> in January 2012.
 #
 # As long as you retain this notice you can do whatever you want with this
 # code.  If we meet some day, and you think it's worth it, you can buy me
