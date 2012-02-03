@@ -11,7 +11,7 @@ page: https://github.com/justinweiss/robut
 == Changes in this fork
 
 I took the liberty of making a few minor changes in this fork.  Most
-notably, this bot responds to commands preceded by a question point
+notably, this bot responds to commands preceded by a question mark
 rather than by addressing the bot via the @-notation.
 
 That is, in this bot, you'd use
