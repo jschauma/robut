@@ -44,6 +44,11 @@ of the first 10 images.
 
 == Additional plugins provided in this fork
 
+[Robut::Plugin::Eightball] answer your yes/no questions
+
+  ?8ball Is this a useful plugin?
+
+
 [Robut::Plugin::Eliza] your friendly neighborhood therapist
 
 A few Eliza- and other snarky comments to allow for moderately
@@ -93,3 +98,7 @@ Get twitter messages:
 Get a brief wikipedia definition
 
   ?wiki cow and chicken
+
+[Robut::Plugin::Wtf] translate acronyms
+
+  ?wtf bofh
