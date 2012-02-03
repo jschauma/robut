@@ -32,7 +32,7 @@ class Robut::Plugin::Wikipedia
 				reply "Couldn't get a definition from " + url
 				return
 			end
-			found = item = false
+			found = item = thisline = false
 			res.each() do |line|
 				if line =~ /<\/table>/
 					found = true
@@ -52,7 +52,14 @@ class Robut::Plugin::Wikipedia
 					end
 
 					if (item and line =~ /^<li>(.*)/) or (not item and line =~ /^<p>(.*)/)
-						txt = HTMLEntities.new.decode($1).gsub(/<\/?[^>]*>/, "")
+						thisline = true
+						if line =~ /^<p><br \/>/
+							next
+						end
+					end
+
+					if thisline
+						txt = HTMLEntities.new.decode(line).gsub(/<\/?[^>]*>/, "")
 						if txt.length() < 140
 							reply txt
 						else
