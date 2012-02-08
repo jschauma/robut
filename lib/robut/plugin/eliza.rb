@@ -158,12 +158,11 @@ class Robut::Plugin::Eliza
 	]
 
 	def handle(time, sender_nick, message)
-		if not sent_to_me?(message)
-			$stderr.puts(message)
-			return
-		end
 
 		input = words(message).join(' ')
+		if input !~ /\b#{nick}\b/i
+			return
+		end
 
 		ELIZA_RESPONSES.each() do |regex, responses|
 			if input =~ regex
