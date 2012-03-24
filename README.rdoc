@@ -93,6 +93,11 @@ Get twitter messages:
 
    ?twitter jschauma
 
+[Robut::Plugin::Twsrs] That's what she really said.
+
+Display a quote like @jessamynsmith's talkbackbot whenever somebody claims
+that that was what she said.
+
 [Robut::Plugin::Wikipedia] Wiki wiki.
 
 Get a brief wikipedia definition
