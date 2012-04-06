@@ -30,7 +30,7 @@ class Robut::Plugin::Trivia
       cmd = true
     end
 
-    if input =~ /(trivia|fact)/ or cmd
+    if input =~ /(trivia|\bfact\b)/ or cmd
       if is_throttled("trivia", nil)
         return
       end

@@ -27,7 +27,7 @@ class Robut::Plugin::Insult
 
     if input =~ /^\?insult (.*)$/
       loser = $1
-      if loser =~ /#{at_nick}/
+      if loser =~ /#{at_nick}/ or loser =~ /\b#{nick}\b/
         loser = sender_nick
       end
       res = Net::HTTP.get_response(URI(url))

@@ -13,7 +13,7 @@ require 'uri'
 require 'net/http'
 require 'net/https'
 
-class Robut::Plugin::Tnwss
+class Robut::Plugin::Twsrs
   include Robut::Plugin
 
   def handle(time, sender_nick, message)
@@ -41,7 +41,7 @@ class Robut::Plugin::Tnwss
         reply res.message
       else
         tnwss =res.body.collect()
-        reply "No, actually, *this* is what she said:"
+        reply "No, actually, *this* is what she really said:"
         reply tnwss[rand(tnwss.length())].strip()
       end
     end

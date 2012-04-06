@@ -160,7 +160,7 @@ class Robut::Plugin::Eliza
 	def handle(time, sender_nick, message)
 
 		input = words(message).join(' ')
-		if input !~ /\b#{nick}\b/i
+		if input !~ /\b#{nick}\b/i or input =~ /^\?/
 			return
 		end
 

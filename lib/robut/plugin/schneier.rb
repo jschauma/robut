@@ -8,6 +8,7 @@
 
 require 'uri'
 require 'net/http'
+require 'htmlentities'
 
 # Responds with a little bit of trivia
 class Robut::Plugin::Schneier
@@ -34,7 +35,8 @@ class Robut::Plugin::Schneier
       else
         res.body.each() do |line|
           if line =~ /.*<p class="fact">(.*)<\/p>/
-            reply $1
+            line = HTMLEntities.new.decode($1)
+            reply line
             return
           end
         end
